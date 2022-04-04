@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Singer</title>
+</head>
+<body>
+	<center>
+		<h3>Singer List</h3>
+	</center>
+	<ul>
+		<!-- Iterate over object_list -->
+		{% for object in object_list %}
+		<!-- Display Objects -->
+			<li><b>Name:</b> {{ object.name }}</li>
+			<li><b>Date of Birth:</b> {{ object.date_of_birth }}</li>
+			<li><b>County Code:</b> {{ object.country_code }}</li>
+			<li><b>Stage Name:</b></li>
+			<ul>
+				{% for stage in object.stage_name.all %}
+					<li>{{ stage }}</li>
+				{% endfor %}
+			</ul>
+			<li><b>Extra Details:</b></li>
+			<ul>
+				{% for extra_param in object.extra_param.all %}
+				<li>{{ extra_param }}</li>
+				{% endfor %}
+			</ul>
+			<hr/>
+			<!-- If object_list is empty -->
+			{% empty %}
+				<li>No objects yet.</li>
+		{% endfor %}
+	</ul>
+
+</body>
+</html>
